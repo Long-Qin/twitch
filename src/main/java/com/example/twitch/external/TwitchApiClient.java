@@ -13,21 +13,27 @@ import java.util.List;
 
 @FeignClient(name = "twitch-api")
 public interface TwitchApiClient {
+
+
     @GetMapping("/games")
     GameResponse getGames(@RequestParam("name") String name);
+
 
     @GetMapping("/games/top")
     GameResponse getTopGames();
 
+
     @GetMapping("/videos/")
     VideoResponse getVideos(@RequestParam("game_id") String gameId, @RequestParam("first") int first);
+
 
     @GetMapping("/clips/")
     ClipResponse getClips(@RequestParam("game_id") String gameId, @RequestParam("first") int first);
 
-    @GetMapping("/streams/")
-    StreamResponse getStreams(@RequestParam("game_id") List<Stream> gameIds, @RequestParam("first") int first);
 
+    @GetMapping("/streams/")
+    StreamResponse getStreams(@RequestParam("game_id") List<String> gameIds, @RequestParam("first") int first);
 
 
 }
+
