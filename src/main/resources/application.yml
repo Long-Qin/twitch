@@ -12,7 +12,7 @@ spring:
             url: https://api.twitch.tv/helix
             loggerLevel: basic
             default-request-headers:
-              Client-ID: yqkz24rx20d2159szmpkkp62fxm6ra
+              Client-Id: yqkz24rx20d2159szmpkkp62fxm6ra
   security:
     oauth2:
       client:
@@ -26,7 +26,8 @@ spring:
           twitch:
             token-uri: https://id.twitch.tv/oauth2/token
 
+
 logging:
   level:
-    org.apache.coyote.http11.Http11InputBuffer: DEBUG # Incoming HTTP requests
-    com.example.twitch.external.TwitchApiClient: DEBUG # Outgoing HTTP requests
+    org.apache.coyote.http11.Http11InputBuffer: DEBUG # Incoming http requests
+    com.example.twitch.external.TwitchApiClient: DEBUG
