@@ -2,6 +2,8 @@ package com.example.twitch.external.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.List;
+
 public record Stream(
         String id,
         @JsonProperty("user_id") String userId,
@@ -11,14 +13,12 @@ public record Stream(
         @JsonProperty("game_name") String gameName,
         String type,
         String title,
-        @JsonProperty("viewer_count") int viewerCount,
+        @JsonProperty("viewer_count") Integer viewerCount,
         @JsonProperty("started_at") String startedAt,
         String language,
         @JsonProperty("thumbnail_url") String thumbnailUrl,
-
-        @JsonProperty("tag_ids") String tagIds,
-
-        @JsonProperty("is_mature") boolean isMature
-
-        ){
+        @JsonProperty("tag_ids") List<String> tagIds,
+        @JsonProperty("is_mature") Boolean isMature
+) {
 }
+
