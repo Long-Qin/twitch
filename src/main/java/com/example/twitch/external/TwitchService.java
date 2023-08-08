@@ -27,10 +27,6 @@ public class TwitchService {
         return twitchApiClient.getStreams(gameIds, first).data();
     }
 
-    //public List<Stream> getStreams(List<String> gameIds, int first) {
-    //return twitchApiClient.getStreams(gameIds, first).data();
-    //}
-
     public List<Video> getVideos(String gameIds, int first) {
         return twitchApiClient.getVideos(gameIds, first).data();
     }
