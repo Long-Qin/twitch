@@ -5,8 +5,12 @@ import com.example.twitch.external.model.Video;
 import com.example.twitch.external.model.Clip;
 import com.example.twitch.external.model.Stream;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
+@Table("items")
 public record ItemEntity(
+        @Id
         Long id,
         @JsonProperty("twitch_id") String twitchId,
         String title,
