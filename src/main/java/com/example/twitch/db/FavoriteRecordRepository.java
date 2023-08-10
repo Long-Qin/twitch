@@ -8,6 +8,7 @@ import org.springframework.data.repository.ListCrudRepository;
 import java.util.List;
 
 public interface FavoriteRecordRepository extends ListCrudRepository<FavoriteRecordEntity, Long> {
+
     List<FavoriteRecordEntity> findAllByUserId(Long userId);
 
     boolean existsByUserIdAndItemId(Long userId, Long itemId);
@@ -18,5 +19,4 @@ public interface FavoriteRecordRepository extends ListCrudRepository<FavoriteRec
     @Modifying
     @Query("DELETE FROM favorite_records WHERE user_id = :userId AND item_id = :itemId")
     void delete(Long userId, Long itemId);
-
 }
