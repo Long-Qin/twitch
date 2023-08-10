@@ -9,6 +9,7 @@ import com.example.twitch.db.entity.ItemEntity;
 import com.example.twitch.db.entity.UserEntity;
 import com.example.twitch.external.model.*;
 import com.example.twitch.external.TwitchService;
+import com.example.twitch.user.UserService;
 import org.apache.catalina.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,19 +27,14 @@ public class DevelopmentTester implements ApplicationRunner {
 
     private static final Logger logger = LoggerFactory.getLogger(DevelopmentTester.class);
 
-    private final UserRepository userRepository;
-    private final ItemRepository itemRepository;
-    private final FavoriteRecordRepository favoriteRecordRepository;
+    private final UserService userService;
 
-    public DevelopmentTester(UserRepository userRepository, ItemRepository itemRepository, FavoriteRecordRepository favoriteRecordRepository) {
-        this.userRepository = userRepository;
-        this.itemRepository = itemRepository;
-        this.favoriteRecordRepository = favoriteRecordRepository;
+    public DevelopmentTester(UserService userService) {
+        this.userService = userService;
     }
 
     @Override
     public void run(ApplicationArguments args) {
-        UserEntity newUser = new UserEntity(null, "user0", "Foo", "Bar", "password");
-        userRepository.save(newUser);
+        userService.register("default", "123456", "John", "Smith");
     }
 }
