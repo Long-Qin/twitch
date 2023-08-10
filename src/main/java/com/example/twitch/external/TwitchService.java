@@ -35,7 +35,7 @@ public class TwitchService {
         return twitchApiClient.getClips(gameIds, first).data();
     }
 
-    public List<String> getTopGameIds() throws IOException {
+    public List<String> getTopGameIds() {
         List<String> topGameIds = new ArrayList<>();
         for (Game game : getTopGames()) {
             topGameIds.add(game.id());
