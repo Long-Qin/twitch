@@ -1,25 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState }from 'react';
+import { Layout, message } from 'antd';
+import { logout } from './utils';
+import PageHeader from './components/PageHeader';
+
+const { Header, Content, Sider } = Layout;
 
 function App() {
+
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  const signinOnSuccess = () => {
+    setLoggedIn(true);
+  }
+
+  const signoutOnClick = () => {
+    logout().then(() => {
+      setLoggedIn(false)
+      message.success('Successfully signed out')
+    }).catch((err) => {
+      message.error(err.message)
+    }) 
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Layout>
+      <Header>
+          <PageHeader loggedIn={loggedIn} signoutOnClick={signoutOnClick} signinOnSuccess={signinOnSuccess}/>
+      </Header>
+      <Layout>
+        <Sider width={300} className="site-layout-background">
+          {'Sider'}
+        </Sider>
+        <Layout style={{ padding : '24px'}}>
+          <Content 
+            className="site-layout-background"
+            style={{
+              padding : 24, 
+              margin: 0,
+              height: 800,
+              overflow: 'auto'
+            }}
+          >
+            {'Home'}
+          </Content>
+        </Layout>
+      </Layout>
+    </Layout>
+  )
 }
 
 export default App;
