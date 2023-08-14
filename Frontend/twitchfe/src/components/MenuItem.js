@@ -1,8 +1,8 @@
-import { menu } from 'antd';
+import { Menu } from 'antd';
 import React from 'react';
 
 function MenuItem({ items }) {
-    return items?.map(() => (
+    return items?.map((item) => (
         <Menu.Item key={item.id}>
             <a href={item.url} target="_blank" rel="noopenper noreferrer">
                 {`${item.url} - ${item.tiitle}`}
