@@ -4,11 +4,12 @@ import com.example.twitch.db.entity.UserEntity;
 import com.example.twitch.external.model.FavoriteRequestBody;
 import com.example.twitch.external.model.TypeGroupedItemList;
 import com.example.twitch.user.UserService;
-import org.apache.catalina.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+
 
 @RestController
 @RequestMapping("/favorite")
@@ -49,4 +50,5 @@ public class FavoriteController {
         favoriteService.unsetFavoriteItem(userEntity, body.favorite().twitchId());
     }
 }
+
 
